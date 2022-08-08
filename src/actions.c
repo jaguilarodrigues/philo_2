@@ -6,7 +6,7 @@
 /*   By: jaqrodri <jaqrodri@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:59:27 by ebresser          #+#    #+#             */
-/*   Updated: 2022/08/08 02:06:00 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2022/08/08 03:10:58 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	philo_eat(t_status *status, int i)
 		return (FALSE);
 	if (philo_print(status, status->philo[i].id, G_CYAN, EAT) == FALSE)
 		return (FALSE);
-	status->philo[i].last_meal = now_ms();
 	exec_action(status->input.time_to_eat);
+	status->philo[i].last_meal = now_ms();
 	drop_forks(status, i);
 	return (TRUE);
 }

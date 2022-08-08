@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jaqrodri <jaqrodri@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:38:09 by ebresser          #+#    #+#             */
-/*   Updated: 2022/08/08 00:35:42 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/08 03:35:17 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,5 @@ int	main(int argc, char **argv)
 		return (1);
 	if (destroy_mutex(&status) == FALSE)
 		return (1);
-	free(status.philo);
-	free(status.forks);
 	return (0);
 }

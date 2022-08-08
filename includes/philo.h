@@ -6,7 +6,7 @@
 /*   By: jaqrodri <jaqrodri@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:41:39 by ebresser          #+#    #+#             */
-/*   Updated: 2022/08/08 01:31:08 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2022/08/08 03:35:05 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@
 # define THINK "is thinking"
 # define FORK "has taken a fork"
 # define DIED "died ☠️"
-# define SATIATED "satiated ☠️"
+# define SATIATED "satiated ⛱"
 
 /*
 ** Structures
@@ -102,10 +102,10 @@ typedef struct s_status
 	int				philo_dead;
 	long long		t0;
 	t_input			input;
-	t_philo			*philo;
+	t_philo			philo[200];
 	pthread_mutex_t	checker_mutex;
 	pthread_mutex_t	printer;
-	pthread_mutex_t	*forks;
+	pthread_mutex_t	forks[200];
 //	pthread_mutex_t	n_thread_philo;
 }				t_status;
 
@@ -126,7 +126,6 @@ int				destroy_mutex(t_status *status);
 
 int				input_errors(int argc, char **argv);
 
-void			free_structs(t_status *status);
 void			*routine(void *args);
 int				routine_execute(t_status *status, int i);
 void			*routine_checker(void *args);

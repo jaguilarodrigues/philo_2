@@ -6,7 +6,7 @@
 /*   By: jaqrodri <jaqrodri@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:17:03 by ebresser          #+#    #+#             */
-/*   Updated: 2022/08/08 01:48:04 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2022/08/08 04:05:20 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ int	create_philos(t_status *status)
 	int	i;
 	int	j;
 
-	status->philo = malloc(sizeof(t_philo) * (status->input.num_philo + 1));
-	if (status->philo == NULL)
-		return (FALSE);
 	i = 0;
 	j = 1;
 	while (j < status->input.num_philo)
