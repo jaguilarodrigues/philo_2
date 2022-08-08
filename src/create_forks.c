@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_forks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jaqrodri <jaqrodri@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:32:19 by ebresser          #+#    #+#             */
-/*   Updated: 2022/08/07 22:11:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/08 03:36:32 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ int	create_forks(t_status *status)
 {
 	int	i;
 
-	status->forks = malloc(sizeof(pthread_mutex_t) * \
-		status->input.num_philo + 1);
-	if (status->forks == NULL)
-		return (FALSE);
+	// ft_putstr("");
+	// ft_putstr("");
 	i = 0;
 	while (i < status->input.num_philo)
 	{
