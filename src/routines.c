@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jaqrodri <jaqrodri@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:51:29 by ebresser          #+#    #+#             */
-/*   Updated: 2022/08/07 22:58:25 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/08 01:59:03 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,28 @@ void	*routine(void *args)
 	i = status->n_thread;
 	current_philo = &(status->philo[status->n_thread]);
 //	pthread_mutex_unlock(&status->n_thread_philo);
-	if (pthread_create(&checker,
+	if (pthread_create(&checker, \
 				NULL, &routine_checker, current_philo))
 		return (FALSE);
 	pthread_detach(checker);
-	if(status->input.num_of_times_eat > 0 && \
-		status->input.num_of_times_eat > status->philo[i].num_of_times_ate)
-		while (routine_execute(status, i))
+
+	while (routine_execute(status, i))
 		continue ;
 	return (NULL);
 }
 
+int	is_satiated(t_status *status, int i)
+{
+	return ((status->input.num_of_times_eat > 0) && \
+		((status->philo[i].num_of_times_ate) >= (status->input.num_of_times_eat)));
+}
+
 int	routine_execute(t_status *status, int i)
 {
+	// ft_putstr("routine_execute\n");
 	if (philo_eat(status, i) == FALSE)
 		return (FALSE);
-	if (status->input.num_of_times_eat > 0 && \
-		status->philo[i].num_of_times_ate >= status->input.num_of_times_eat)
+	if (is_satiated(status, i))
 	{
 		philo_print(status, status->philo[i].id, BOLD_ORANGE, SATIATED);
 		return (FALSE);

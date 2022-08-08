@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_philos.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jaqrodri <jaqrodri@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:17:03 by ebresser          #+#    #+#             */
-/*   Updated: 2022/08/07 22:45:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/08 01:48:04 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	fill_philo_struct(t_status *status, int i, int j)
 {
 	status->philo[i].id = i + 1;
 	status->philo[i].num_of_times_ate = 0;
-	status->philo[i].last_meal = 0;
+	status->philo[i].last_meal = status->t0;
 	status->philo[i].left_fork = &status->forks[i];
 	status->philo[i].right_fork = &status->forks[j];
 	status->philo[i].time_to_die = status->input.time_to_die;

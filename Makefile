@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
+#    By: jaqrodri <jaqrodri@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/10 16:38:44 by ebresser          #+#    #+#              #
-#    Updated: 2022/08/07 22:59:00 by coder            ###   ########.fr        #
+#    Updated: 2022/08/08 01:00:22 by jaqrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,14 @@ SRC =	$(SRC_DIR)/actions.c \
 		$(SRC_DIR)/set_input.c \
 		$(SRC_DIR)/time.c \
 		$(SRC_DIR)/utils_number.c \
+		$(SRC_DIR)/ft_putstr.c \
 		$(SRC_DIR)/utils_str.c
 
 OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
 
 CC = clang
 HEAD = -I./includes
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g
 LFLAGS = -pthread
 RM = /bin/rm -rf
 

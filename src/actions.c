@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jaqrodri <jaqrodri@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 18:59:27 by ebresser          #+#    #+#             */
-/*   Updated: 2022/08/07 22:43:12 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/08 02:06:00 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 int	philo_eat(t_status *status, int i)
 {
+	// ft_putstr("vai comer\n");
+	if (status->philo_dead == TRUE || is_satiated(status, i) == TRUE)
+	{
+		// ft_putstr("não comeu\n");
+		return (FALSE);
+	}
 	if (pthread_mutex_lock(status->philo[i].left_fork) != 0)
 		return (FALSE);
 	status->philo[i].has_left_fork = 1;
@@ -34,6 +40,8 @@ int	philo_eat(t_status *status, int i)
 
 int	philo_sleep(t_status *status, int i)
 {
+	if (status->philo_dead == TRUE || is_satiated(status, i) == TRUE)
+		return (FALSE);
 	if (philo_print(status, status->philo[i].id, BLUE, SLEEP) == FALSE)
 		return (FALSE);
 	exec_action(status->input.time_to_sleep);
@@ -42,6 +50,8 @@ int	philo_sleep(t_status *status, int i)
 
 int	philo_think(t_status *status, int i)
 {
+	if (status->philo_dead == TRUE || is_satiated(status, i) == TRUE)
+		return (FALSE);
 	if (philo_print(status, status->philo[i].id, G_BLUE, THINK) == FALSE)
 		return (FALSE);
 	return (TRUE);
@@ -66,13 +76,12 @@ int	philo_is_dead(t_philo *philo)
 
 	time = delta_time(philo->last_meal);
 	now = duration_ms(*(philo->t0));
-	pthread_mutex_lock(philo->printer);
-	printf("%s%-10lld %-3d %-30s%s\n", PINK, now, philo->id, DIED, RESET);
-	pthread_mutex_unlock(philo->printer);
-	if (time > philo->time_to_die && philo->death_ctrl == FALSE)
+	if (time > (philo->time_to_die) && (*(philo->death_ctrl) == FALSE))
 	{
 		*(philo->death_ctrl) = TRUE;
-
+		pthread_mutex_lock(philo->printer);
+		printf("%s%-10lld %-3d %-30s%s\n", PINK, now, philo->id, DIED, RESET);
+		pthread_mutex_unlock(philo->printer);
 		if (philo->has_left_fork == 1)
 			pthread_mutex_unlock(philo->left_fork);
 		if (philo->has_right_fork == 1)

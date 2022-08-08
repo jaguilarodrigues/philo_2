@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jaqrodri <jaqrodri@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 16:41:39 by ebresser          #+#    #+#             */
-/*   Updated: 2022/08/07 22:35:15 by coder            ###   ########.fr       */
+/*   Updated: 2022/08/08 01:31:08 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,7 @@ int				ft_atoi(const char *str);
 long long int	ft_atoll(char *str);
 int				ft_isdigit(int c);
 size_t			ft_strlcpy(char *dest, const char *src, size_t size);
+void			ft_putstr(char *s);
+int				is_satiated(t_status *status, int i);
 
 #endif
